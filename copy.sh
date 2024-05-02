@@ -8,14 +8,14 @@ copy_files() {
     local name
 
     for file in "$src_path"/*; do
-        if [ -d "$file" ]; then
+        if [[ -d "$file" ]]; then
             copy_files "$file" "$dest_path"
-        elif [ -f "$file" ]; then
+        elif [[ -f "$file" ]]; then
             name=$(basename -- "$file")
-            if [ -e "$dest_path/$name" ]; then
+            if [[ -e "$dest_path/$name" ]]; then
                 local cnt=1
                 local new_name
-                while [ -e "$dest_path/${cnt}_$name" ]; do
+                while [[ -e "$dest_path/${cnt}_$name" ]]; do
                     ((cnt++))
                 done
                 new_name="${cnt}_$name"
